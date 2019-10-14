@@ -6,19 +6,19 @@ C ++课程作业
 **无法确定是否指向合法对象，不确定是否为有效指针**
 
 # 2.24
->因为lp的类型不是int，而void定义了一个空指针，可以接受任意类型的对象
+**因为lp的类型不是int，而void定义了一个空指针，可以接受任意类型的对象**
 
 # 2.25
->1：p是一个int类指针型的，i是一个int型的变量，r是一个int型的引用。  
- 2：i是一个int型的变量，ip是一个空指针。  
- 3：ip是一个int类型的指针，ip2是一个int类型的变量。  
+**1：p是一个int类指针型的，i是一个int型的变量，r是一个int型的引用。    
+  2：i是一个int型的变量，ip是一个空指针。    
+  3：ip是一个int类型的指针，ip2是一个int类型的变量。** 
      
 # 2.35
->第一个auto  j  类型为int  
- 第二个auto  &k 类型为const int &  
- 第三个auto *p类型为const int *  
- 第四个auto j2类型为const int  
- 第五个auto &k2 类型为const int&  
+**第一个auto  j  类型为int    
+  第二个auto  &k 类型为const int &    
+  第三个auto *p类型为const int *    
+  第四个auto j2类型为const int    
+  第五个auto &k2 类型为const int&**
      
 # 3.20  
 初始程序
