@@ -184,70 +184,48 @@ int main()
 **访问说明符的作用域是开始知道下一个访问说明符或者类结束。不想被使用该类的程序看到的代码细节，都要private.**
 
 ## 7.27
-头文件
 ``` c++
-#pragma once
- 
-#include <iostream>
-using namespace std;
-
-class CScreen
-{
+#ifndef SCREEN_H
+#define SCREEN_H
+#include <string>
+class Screen {
 public:
-	typedef std::string::size_type pos;
- 
-public:
-	CScreen();   // 默认构造函数
-	CScreen(pos ht, pos wd, char c) ;
-	~CScreen();
- 
-public:
-	char get() const
-	{
-		return contents[cursor];
-	}
-	inline char get(pos ht, pos wd) const;
-	CScreen& move(pos r, pos c);
- 
+    using pos = std::string::size_type;
+    Screen() = default;
+    Screen(pos h, pos w) : height(h), width(w), content(h * w, ' ') {}
+    Screen(pos h, pos w, char c) : height(h), width(w), content(h * w, c) {}
+    char get() const { return content[cursor]; }
+    char get(pos, pos);
+    inline char get(pos, pos) const;
+    Screen &move(pos, pos);
+    Screen &set(char);
+    Screen &set(pos, pos, char);
+    Screen &display(std::ostream &os){ do_display(os); return * this;}
+    const Screen &display(std::ostream &os) const { do_display(os); return * this;}
 private:
-	pos cursor;
-	pos height;
-	pos width;
-	std::string contents;
-}; 
-```
-源文件
-``` c++
-#include "stdafx.h"
-#include "Screen.h"
- 
-CScreen::CScreen()
-{
-	height = 0;
-	width = 0;
-	cursor = 0;
+    void do_display(std::ostream &os) const { os << content; }
+    pos height = 0;
+    pos width = 0;
+    pos cursor = 0;
+    std::string content;
+};
+
+char Screen::get (pos row, pos col) {
+    return content[row * width + col];
 }
- 
-CScreen::CScreen(pos ht, pos wd, char c) : height(ht), width(wd), contents(ht * wd, c)
-{
+inline Screen &Screen::move(pos r, pos c){
+    cursor = r * width + c;
+    return * this;
 }
- 
-CScreen::~CScreen()
-{
+inline Screen &Screen::set(char c) {
+    content[cursor] = c;
+    return * this;
 }
- 
-CScreen& CScreen::move(pos r, pos c)
-{
-	pos row = r * width;
-	cursor = row + c;
-	return *this;
+inline Screen &Screen::set(pos row, pos col, char c) {
+    content[row * width + col] = c;
+    return * this;
 }
- 
-char CScreen::get(pos r, pos c) const
-{
-	pos row = r * width;
-	return contents[row + c];
-}
+#endif        // SCREEN_H
 ```
 ## 7.49
 **(a)合法    
