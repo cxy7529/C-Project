@@ -184,8 +184,70 @@ int main()
 **访问说明符的作用域是开始知道下一个访问说明符或者类结束。不想被使用该类的程序看到的代码细节，都要private.**
 
 ## 7.27
+头文件
 ``` c++
-myScreen.move(4, 0).set('#').display(std::cout);
+#pragma once
+ 
+#include <iostream>
+using namespace std;
+
+class CScreen
+{
+public:
+	typedef std::string::size_type pos;
+ 
+public:
+	CScreen();   // 默认构造函数
+	CScreen(pos ht, pos wd, char c) ;
+	~CScreen();
+ 
+public:
+	char get() const
+	{
+		return contents[cursor];
+	}
+	inline char get(pos ht, pos wd) const;
+	CScreen& move(pos r, pos c);
+ 
+private:
+	pos cursor;
+	pos height;
+	pos width;
+	std::string contents;
+}; 
+```
+源文件
+``` c++
+#include "stdafx.h"
+#include "Screen.h"
+ 
+CScreen::CScreen()
+{
+	height = 0;
+	width = 0;
+	cursor = 0;
+}
+ 
+CScreen::CScreen(pos ht, pos wd, char c) : height(ht), width(wd), contents(ht * wd, c)
+{
+}
+ 
+CScreen::~CScreen()
+{
+}
+ 
+CScreen& CScreen::move(pos r, pos c)
+{
+	pos row = r * width;
+	cursor = row + c;
+	return *this;
+}
+ 
+char CScreen::get(pos r, pos c) const
+{
+	pos row = r * width;
+	return contents[row + c];
+}
 ```
 ## 7.49
 **(a)合法    
