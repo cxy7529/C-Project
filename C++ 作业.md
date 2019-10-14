@@ -16,9 +16,10 @@ C ++课程作业
 ## 2.35
 __第一个auto  j  类型为int    
   第二个auto  &k 类型为const int &    
-  第三个auto *p类型为const int *    
-  第四个auto j2类型为const int    
+  第三个auto *p类型为const int *      
+  第四个auto j2类型为const int      
   第五个auto &k2 类型为const int&
+__
      
 # 3.20  
 初始程序
