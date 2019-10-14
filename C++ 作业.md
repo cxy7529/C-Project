@@ -189,7 +189,7 @@ myScreen.move(4, 0).set('#').display(std::cout);
 ```
 # 7.49
 >(a)合法  
- (b)不合法，Salesdata&类型与Salesdata类型之间不可转换
+ (b)不合法，Salesdata&类型与Salesdata类型之间不可转换  
  (c)不合法，const不对，因为combine本身是需要改变传入参数的
 
 # 7.58
