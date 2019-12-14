@@ -88,7 +88,8 @@ private:
 };
 ```
 ## 16.12
-> 编写你自己版本的 Blob 和 BlobPtr 模版，包含书中未定义的多个const成员  
+> 编写你自己版本的 Blob 和 BlobPtr 模版，包含书中未定义的多个const成员    
+
 这题俺不会
 
 ## 16.19
@@ -111,7 +112,8 @@ auto sum(T lhs, T rhs) -> decltype( lhs + rhs)
 }
 ```
 ## 16.62
-> 定义你自己版本的 hash<Sales_data>, 并定义一个 Sales_data 对象的 unorder_multise。将多条交易记录保存到容器中，并打印其内容。  
+> 定义你自己版本的 hash<Sales_data>, 并定义一个 Sales_data 对象的 unorder_multise。将多条交易记录保存到容器中，并打印其内容。   
+
 俺也不会
 ## 12.1
 > 在此代码的结尾，b1和b2各包含多少元素？  
@@ -217,5 +219,6 @@ StrBlobPtr StrBlob::end()
 }
 ```
 ## 12.30
-> 定义你自己版本的 TextQuery 和 QueryResult 类，并执行12.3.1节中的runQueries 函数。  
+> 定义你自己版本的 TextQuery 和 QueryResult 类，并执行12.3.1节中的runQueries 函数。    
+
 俺也不会
