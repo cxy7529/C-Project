@@ -14,8 +14,10 @@ nebula 项目启动成功
 然后进入nebula/src/common/time/test 测试目录下 发现vim 失败
 重新配置了一遍vim然后开始接下来的操作 
 在build目录下test都测试成功 
-
-它又出bug了，只能git init试试看  
+#### 如下图所示
+![](https://github.com/cxy7529/C-Project/blob/master/QQ%E5%9B%BE%E7%89%8720191227012922.png)
+### 第二步 配置远程仓库
+在git remote的时候它又出bug了，只能git init试试看  
 最终在google的帮助下 我配置好了SSH Key  虽然对这一步没啥影响  
 由于开始的bug没有解决 我选择重新启动 然后又是艰难的等待70min
 然后他就好了 可以成功将test目录下的 .cpp 文件都测试了一下  
@@ -25,7 +27,19 @@ nebula 项目启动成功
 最终他终于git 下来了
 在分支myfeature上运行并且启动nebula成功  并且保持分支同步
 在src/console目录下 vim CmdProcessor.cpp 文件并且build成功  
-其中有一部分代码还不是很懂  
-git push它报错了
-大体就完成了以上功能  
-修改文件应该没有 commit成功 
+#### 在问题2增加当时的时间的情况下我作出了修改，修改路径就是nebula/src/comsole/CmdProcessor.cpp
+##### 增加代码
+```cpp
+void CmdProcessor::getTime() {
+    time_t timep;
+    time(&timep);
+    char tmp[64];
+    strftime(tmp, sizeof(tmp), "%Y-%m-%d %H-%M-%S", localtime(&timep));
+    std::string Time(tmp);
+    std::cout << Time << std::endl;
+}
+```
+### 总结
+总而言之，在这门课一开始，老师就已经告诉我们C++是一门很难的课程。我也很想去学好这门课程。而在开源平台上的学习和使用更对我来说是一个挑战，
+老师上课讲的内容确实非常有用，虽然我对其中很多都不是很懂。不过如果有机会的话，我会在假期把这门课捡起来再好好学习一遍。将老师上课讲授的内
+容融会贯通，好好钻研。也算完成对自己刚刚上课时候的一个小小的期待吧。
